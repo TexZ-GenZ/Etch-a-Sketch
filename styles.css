@@ -4,17 +4,32 @@ body{
     justify-content: center;
     align-items: center;
     gap: 20px;
+    background-color: rgb(56, 98, 124);
 }
 
 .heading{
     margin-bottom: 0%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
-
+.buttons{
+    display: flex;
+    gap: 30px;
+}
+.buttons > button{
+    height: 40px;
+    width: 150px;
+    border: 0;
+    border-radius: 12px;
+    background-color: rgb(86, 145, 182);
+    font-size: 16px;
+    color: greenyellow;
+}
 #container{
     width: 600px;
     height: 600px;
-    background-color: bisque;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
+    border: 5px solid black;
 }

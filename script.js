@@ -16,7 +16,7 @@ function createGrid(numberOfGrid){
 
 }
 
-const resetGrid = document.querySelector(".resetGrid");
+const resetGrid = document.querySelector(".setGridSize");
 
 createGrid(16);
 
@@ -33,17 +33,18 @@ resetGrid.addEventListener("click",()=>{
     
 })
 
-function generateRandomRGBColor() {
+function generateRandomRGBColor(value) {
     const red = Math.floor(Math.random() * 255);
     const green = Math.floor(Math.random() * 255);
     const blue = Math.floor(Math.random() * 255);
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
+
+
 container.addEventListener("mouseover",(event)=>{
     if (event.target.classList.contains('grid')) {
-
-        event.target.style.backgroundColor = generateRandomRGBColor();
+            event.target.style.backgroundColor = generateRandomRGBColor(9);
     }
 })
 
