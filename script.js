@@ -2,7 +2,14 @@ const container = document.querySelector("#container");
 
 const WIDTH = 600;
 
-function createGrid(numberOfGrid){
+
+let isRandom = true;
+let isDark = false;
+
+
+function createGrid(numberOfGrid, isDark){
+
+    container.innerHTML = '';
     for (let i = 0; i < numberOfGrid**2; i++) {
     
         const grid = document.createElement("div");
@@ -11,24 +18,29 @@ function createGrid(numberOfGrid){
         grid.style.height = (WIDTH/numberOfGrid) + "px"; 
         grid.style.margin = 0;
         
+        if (isDark) {
+            grid.style.backgroundColor = "black";
+            grid.style.opacity = 0;
+        }
         container.appendChild(grid);
     }
 
 }
 
-const resetGrid = document.querySelector(".setGridSize");
+const setGridSize = document.querySelector(".setGridSize");
 
-createGrid(16);
+let numberOfGrid = 16;
+createGrid(numberOfGrid, isDark);
 
-resetGrid.addEventListener("click",()=>{
-    container.innerHTML = '';
-    const numberOfGrid =  parseInt(prompt("Enter number of Grid: ",0));
+setGridSize.addEventListener("click",()=>{
+    
+    numberOfGrid =  parseInt(prompt("Enter number of Grid: ",0));
     if (numberOfGrid > 100) {
         alert('Oops!!!, Maximum limit is 100');
         createGrid(16);
     }
     else{
-        createGrid(numberOfGrid);
+        createGrid(numberOfGrid, isDark);
     }
     
 })
@@ -41,11 +53,35 @@ function generateRandomRGBColor(value) {
 }
 
 
-
 container.addEventListener("mouseover",(event)=>{
+    
     if (event.target.classList.contains('grid')) {
-            event.target.style.backgroundColor = generateRandomRGBColor(9);
+            if (isRandom) {
+                event.target.style.backgroundColor = generateRandomRGBColor(9);
+            }
+            else {
+                if(event.target.style.opacity < 1){
+                    let currentOpacity = parseFloat(event.target.style.opacity); 
+                    event.target.style.opacity = (currentOpacity + 0.1).toString();
+                }
+            }
     }
+})
+
+const random = document.querySelector(".random");
+const darken = document.querySelector(".darken");
+
+
+darken.addEventListener("click",()=>{
+    isRandom = false;
+    isDark = true;
+    createGrid(numberOfGrid, isDark);
+})
+
+random.addEventListener("click",()=>{
+    isRandom = true;
+    isDark = false;
+    createGrid(numberOfGrid, isDark);
 })
 
 
