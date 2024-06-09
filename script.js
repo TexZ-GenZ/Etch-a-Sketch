@@ -3,7 +3,7 @@ const container = document.querySelector("#container");
 const WIDTH = 600;
 
 
-let isRandom = true;
+let isRandom = false;
 let isDark = false;
 
 
@@ -45,7 +45,7 @@ setGridSize.addEventListener("click",()=>{
     
 })
 
-function generateRandomRGBColor(value) {
+function generateRandomRGBColor() {
     const red = Math.floor(Math.random() * 255);
     const green = Math.floor(Math.random() * 255);
     const blue = Math.floor(Math.random() * 255);
@@ -57,20 +57,29 @@ container.addEventListener("mouseover",(event)=>{
     
     if (event.target.classList.contains('grid')) {
             if (isRandom) {
-                event.target.style.backgroundColor = generateRandomRGBColor(9);
+                event.target.style.backgroundColor = generateRandomRGBColor();
             }
-            else {
+            else if(isDark) {
                 if(event.target.style.opacity < 1){
                     let currentOpacity = parseFloat(event.target.style.opacity); 
                     event.target.style.opacity = (currentOpacity + 0.1).toString();
                 }
+            }
+            else{
+                event.target.style.backgroundColor = "red";
             }
     }
 })
 
 const random = document.querySelector(".random");
 const darken = document.querySelector(".darken");
+const mono = document.querySelector(".mono");
 
+mono.addEventListener("click",()=>{
+    isRandom = false;
+    isDark = false;
+    createGrid(numberOfGrid, isDark);
+})
 
 darken.addEventListener("click",()=>{
     isRandom = false;
