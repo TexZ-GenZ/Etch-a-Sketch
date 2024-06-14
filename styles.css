@@ -32,7 +32,11 @@ body{
     box-shadow: 0 0 10px;
 }
 
-
+.colorPicker{
+    width : 40px;
+    height: 40px;
+    padding: 0;
+}
 .buttons > button:hover{
     scale: 1.05;
 }
