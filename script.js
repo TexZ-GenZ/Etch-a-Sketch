@@ -5,11 +5,13 @@ const WIDTH = 600;
 
 let isRandom = false;
 let isDark = false;
-
+let color = 'black';
 
 function createGrid(numberOfGrid, isDark){
 
+
     container.innerHTML = '';
+    
     for (let i = 0; i < numberOfGrid**2; i++) {
     
         const grid = document.createElement("div");
@@ -66,7 +68,7 @@ container.addEventListener("mouseover",(event)=>{
                 }
             }
             else{
-                event.target.style.backgroundColor = "red";
+                event.target.style.backgroundColor = color;
             }
     }
 })
@@ -78,6 +80,7 @@ const mono = document.querySelector(".mono");
 mono.addEventListener("click",()=>{
     isRandom = false;
     isDark = false;
+    colorPicker.click();
     createGrid(numberOfGrid, isDark);
 })
 
@@ -94,5 +97,17 @@ random.addEventListener("click",()=>{
 })
 
 
+const reset = document.querySelector(".reset");
+
+reset.addEventListener("click",()=>{
+    createGrid(numberOfGrid, isDark);
+})
+
+const colorPicker = document.getElementById('colorPicker');
 
 
+colorPicker.addEventListener('input', function() {
+    // Change the background color of the target element
+    color = colorPicker.value;
+    
+});

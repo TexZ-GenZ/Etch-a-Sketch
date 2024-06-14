@@ -3,14 +3,14 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(56, 98, 124);
+    background-color: rgb(76, 77, 78);
 }
 
 .heading{
     margin: 20px 0 20px 0;
     font-family:'Courier New', Courier, monospace;
     font-size: 36px;
-    color: rgb(106, 184, 233);
+    color: rgb(255, 255, 255);
 }
 
 .buttons{
@@ -23,11 +23,21 @@ body{
     width: 150px;
     border: 0;
     border-radius: 12px;
-    background-color: rgb(86, 145, 182);
+    background-color: rgba(0, 0, 0,0.3);
+    backdrop-filter: blur(10px);
     font-family:'Courier New', Courier, monospace;
     font-size: 16px;
-    color: rgb(31, 55, 69);
+    color: rgb(255, 255, 255);
     font-weight: 600;
+    box-shadow: 0 0 10px;
+}
+
+
+.buttons > button:hover{
+    scale: 1.05;
+}
+.buttons > button:active{
+    scale: 1.02;
 }
 #container{
     width: 600px;
@@ -35,5 +45,6 @@ body{
     background-color: white;
     display: flex;
     flex-wrap: wrap;
-    border: 5px solid black;
+    border: 2px solid black;
+    box-shadow: 0 0 20px ;
 }
